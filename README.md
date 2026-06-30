@@ -27,7 +27,7 @@ Update your local package indexes and install fundamental networking/certificate
 ```bash
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install -y curl apt-transport-https ca-certificates gnupg
-
+```
 ---
 
 ### Phase 2: Install and Configure Docker
@@ -45,7 +45,7 @@ sudo systemctl enable docker
 # 3. Grant your current 'ubuntu' user permission to use Docker without sudo
 sudo usermod -aG docker $USER
 newgrp docker
-
+```
 ### Phase 3: Install KinD & Kubectl
 Download and install the Kubernetes command-line tool (kubectl) and the KinD binary, then provision the cluster.
 
@@ -61,11 +61,13 @@ sudo mv ./kind /usr/local/bin/kind
 
 # 3. Create your KinD Cluster
 kind create cluster --name demo-argocd
+```
 Verify Cluster Status
 Ensure your cluster is fully operational by running:
 
 ```bash
 kubectl get nodes
+```
 Note: You should see a node named demo-argocd-control-plane in a Ready status.
 
 ### Phase 4: Deploy ArgoCD
@@ -80,12 +82,14 @@ kubectl apply -n argocd -f [https://raw.githubusercontent.com/argoproj/argo-cd/s
 
 # 3. Monitor the deployment progress until all pods are 'Running'
 kubectl get pods -n argocd --watch
-🖥️ Accessing the ArgoCD Dashboard
+```
+Accessing the ArgoCD Dashboard
 1. Port-Forward to Public Network
 Expose the internal argocd-server service to your public EC2 interface via port 8080.
 
 ```bash
 kubectl port-forward --address 0.0.0.0 svc/argocd-server -n argocd 8080:443 > /dev/null 2>&1 &
+```
 (Note: An & has been added to the end of this command to run it in the background of your terminal session).
 
 2. Retrieve the Initial Admin Password
@@ -93,6 +97,7 @@ ArgoCD generates a secure default password for the admin user during installatio
 
 ```bash
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+```
 3. Log In
 Open your web browser and navigate to: http://<YOUR_EC2_PUBLIC_IP>:8080
 

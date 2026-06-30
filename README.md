@@ -99,8 +99,6 @@ ArgoCD generates a secure default password for the admin user during installatio
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 3. Log In
-Open your web browser and navigate to: http://<YOUR_EC2_PUBLIC_IP>:8080
-
-Username: admin
-
-Password: Use the string output retrieved from the command above.
+    Open your web browser and navigate to: http://<YOUR_EC2_PUBLIC_IP>:8080
+    Username: admin
+    Password: Use the string output retrieved from the command above.

@@ -1,6 +1,6 @@
 # GitOps Setup with KinD and ArgoCD
 
-This repository provides a step-by-step guide to setting up a local Kubernetes cluster using **KinD (Kubernetes in Docker)** on an AWS EC2 instance and deploying **ArgoCD** for GitOps continuous delivery....
+This repository provides a step-by-step guide to setting up a local Kubernetes cluster using **KinD (Kubernetes in Docker)** on an AWS EC2 instance and deploying **ArgoCD** for GitOps continuous delivery.
 
 ---
 
